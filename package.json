@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "seed": "node utils/seed"
+    "seed": "node utils/clear"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",

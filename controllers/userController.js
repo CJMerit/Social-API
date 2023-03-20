@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 module.exports = {
   getUsers(req, res) {
-    User.find()
+    User.find({}, '-__v')
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -12,7 +12,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   getSingleUser(req, res) {
-    User.findOne({ _id: req.params.userId })
+    User.findOne({ _id: req.params.userId },  '-__v')
       .then(async (user) =>
         !user
           ? res.status(404).json({ message: 'No user with that ID' })

@@ -2,7 +2,7 @@ const { Thought, User } = require('../models');
 
 module.exports = {
   getThoughts(req, res) {
-    Thought.find()
+    Thought.find({},  '-__v')
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
@@ -24,7 +24,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtId })
+    Thought.findOne({ _id: req.params.thoughtId },  '-__v')
       .then(async (thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
